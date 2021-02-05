@@ -16,7 +16,9 @@ const HttpSub = (storage, action, host = 'localhost', port = 4321) => (dispatch)
   const wss = new ws.Server({ server });
 
   app.use(bodyParser.json());
-  app.use(helmet());
+  app.use(helmet({
+    frameguard: false,
+  }));
 
   const router = new express.Router();
 
